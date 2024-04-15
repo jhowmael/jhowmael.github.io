@@ -400,7 +400,7 @@ h5{
 #hero {
   width: 100%;
   height: auto;
-  background-image: url('');
+  /*background-image: url('');*/
   background-color: rgb(49, 49, 49);
   background-size: cover; /* Garante que a imagem cubra todo o container */
 }
