@@ -10,8 +10,12 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
-  color: #444444;
+    color: #444444;
+    font-family: serif;
+    text-align: justify;
+}
+
+p{
 }
 
 a {
@@ -30,7 +34,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Raleway", sans-serif;
+  font-family: serif;
 }
 
 h1, h4{
@@ -398,10 +402,7 @@ h5{
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
-  width: 100%;
-  height: auto;
-  /*background-image: url('');*/
-  background-color: rgb(49, 49, 49);
+  background-image: url('./img/banner.png');
   background-size: cover; /* Garante que a imagem cubra todo o container */
 }
 
