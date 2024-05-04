@@ -403,7 +403,7 @@ h5, h3{
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
-  background-image: url('./img/banner.png');
+  background-image: url('../img/banner.png');
   background-size: cover; /* Garante que a imagem cubra todo o container */
 }
 
@@ -547,6 +547,6 @@ section {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
 }
 
-.carousel-item h5, p{
-  color: #000000
+.text-description {
+  text-align: justify;
 }
