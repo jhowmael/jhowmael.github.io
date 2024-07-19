@@ -409,7 +409,6 @@
         &copy; Copyright <strong><span>Jonatan Ismael</span></strong>
       </div>
     </div>
-    <span id="visit-count"></span>
   </footer>
 </html>
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -420,13 +419,3 @@
 <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="assets/vendor/php-email-form/validate.js"></script>
 <script src="assets/js/main.js"></script>
-
-<script>
-  let visitCount = localStorage.getItem('visitCount');
-  if (!visitCount) {
-      visitCount = 0;
-  }
-  visitCount++;
-  localStorage.setItem('visitCount', visitCount);
-  document.getElementById('visit-count').innerText = visitCount;
-</script>
