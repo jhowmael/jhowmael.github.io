@@ -1,14 +1,3 @@
-/**
-* Template Name: Green
-* Template URL: https://bootstrapmade.com/green-free-one-page-bootstrap-template/
-* Updated: Mar 17 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
 body {
     color: #444444;
     font-family: serif;
@@ -20,6 +9,7 @@ p{
 }
 
 a {
+  font-size: 20px;
   text-decoration: none;
   color: #5cb874;
 }
@@ -51,9 +41,6 @@ h5, h3{
   text-align: center;
 }
 
-/*--------------------------------------------------------------
-# Back to top button
---------------------------------------------------------------*/
 .back-to-top {
   position: fixed;
   visibility: hidden;
@@ -84,15 +71,17 @@ h5, h3{
   opacity: 1;
 }
 
-/*--------------------------------------------------------------
-# Top Bar
---------------------------------------------------------------*/
 #topbar {
   background: #f1f1f1;
   font-size: 15px;
   height: 40px;
   padding: 0;
 }
+
+#topbar  a{
+  font-size: 15px;
+}
+
 
 #topbar .contact-info a {
   line-height: 0;
@@ -126,17 +115,10 @@ h5, h3{
   color: #5cb874;
 }
 
-/*--------------------------------------------------------------
-# Header
---------------------------------------------------------------*/
 #header {
   background: #fff;
   transition: all 0.5s;
-  z-index: 997;
   height: 70px;
-}
-
-#header.header-scrolled {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -162,12 +144,6 @@ h5, h3{
   margin-top: 70px;
 }
 
-/*--------------------------------------------------------------
-# Navigation Menu
---------------------------------------------------------------*/
-/**
-* Desktop Navigation 
-*/
 .navbar {
   padding: 0;
 }
@@ -290,9 +266,6 @@ h5, h3{
   }
 }
 
-/**
-* Mobile Navigation 
-*/
 .mobile-nav-toggle {
   color: #222222;
   font-size: 28px;
@@ -399,17 +372,23 @@ h5, h3{
   display: block;
 }
 
-/*--------------------------------------------------------------
-# Hero Section
---------------------------------------------------------------*/
 #hero {
   background-image: url('../img/banner.png');
-  background-size: cover; /* Garante que a imagem cubra todo o container */
+  background-size: cover; 
 }
 
-/*--------------------------------------------------------------
-# Sections General
---------------------------------------------------------------*/
+#hero h2{
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); 
+}
+
+h2{
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+h4{
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
 section {
   padding: 60px 0;
 }
@@ -419,6 +398,7 @@ section {
 }
 
 .section-title {
+  color: #449d5b;
   text-align: center;
   padding-bottom: 30px;
 }
@@ -459,9 +439,7 @@ section {
   font-size: 14px;
   color: #919191;
 }
-/*--------------------------------------------------------------
-# Footer
---------------------------------------------------------------*/
+
 #footer {
   background: #090909;
   color: #fff;
@@ -543,10 +521,34 @@ section {
 }
 
 .icon-box:hover {
-  transform: scale(1.05); 
+  transform: scale(1.03); 
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
 }
 
 .text-description {
   text-align: justify;
+}
+
+.featured-portifolio{
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+}
+
+.hover-effect {
+  transition: transform 0.3s ease;
+}
+
+.hover-effect:hover {
+  transform: scale(1.1);
+}
+
+.col-lg-4, .col-md-6 {
+  overflow: hidden; 
+}
+
+.description {
+  margin-top: 10px;
+}
+
+.custom-hr{
+  color: #449d5b;
 }
