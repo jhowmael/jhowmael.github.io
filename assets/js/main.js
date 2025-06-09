@@ -265,3 +265,25 @@
   });
 
 })()
+
+  function shuffleIcons() {
+    const table = document.getElementById('icon-table');
+    const allTDs = Array.from(table.querySelectorAll('td'));
+
+    // Guarda os conteúdos dos <td> (com os ícones dentro da div.icon-box)
+    const contents = allTDs.map(td => td.innerHTML);
+
+    // Embaralha os conteúdos
+    for (let i = contents.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [contents[i], contents[j]] = [contents[j], contents[i]];
+    }
+
+    // Aplica os novos conteúdos nos mesmos <td>
+    allTDs.forEach((td, i) => {
+      td.innerHTML = contents[i];
+    });
+  }
+
+  // Chama a função a cada 4 segundos
+  setInterval(shuffleIcons, 4000);
