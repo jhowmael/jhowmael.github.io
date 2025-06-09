@@ -287,3 +287,71 @@
 
   // Chama a função a cada 4 segundos
   setInterval(shuffleIcons, 4000);
+
+  
+function efeitoDigitandoEmTodos(velocidade = 100) {
+  const elementos = document.querySelectorAll('.write');
+  elementos.forEach((elemento) => {
+    const textoOriginal = elemento.textContent;
+    elemento.textContent = '';
+    let i = 0;
+    function digitar() {
+      if (i < textoOriginal.length) {
+        elemento.textContent += textoOriginal.charAt(i);
+        i++;
+        setTimeout(digitar, velocidade);
+      }
+    }
+    digitar();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  efeitoDigitandoEmTodos(120);
+});
+
+
+   const phrases = [
+      "<Jonatan>",
+      "<Ismael>",
+      "</Jonatan Ismael>"
+    ];
+
+    const typingSpeed = 100;
+    const erasingSpeed = 50;
+    const delayBetweenPhrases = 1000;
+
+    const el = document.getElementById("typewriter");
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+      const currentPhrase = phrases[phraseIndex];
+
+      if (!isDeleting) {
+        el.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+
+        if (charIndex === currentPhrase.length) {
+          isDeleting = true;
+          setTimeout(type, delayBetweenPhrases);
+          return;
+        }
+      } else {
+        el.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+
+        if (charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(type, delayBetweenPhrases);
+          return;
+        }
+      }
+
+      setTimeout(type, isDeleting ? erasingSpeed : typingSpeed);
+    }
+
+    type();
