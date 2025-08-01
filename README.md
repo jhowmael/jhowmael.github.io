@@ -23,7 +23,7 @@ Para rodar o projeto na sua máquina, siga os passos abaixo:
 Clone o repositório:
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone git@github.com:jhowmael/jhowmael.github.io.git
 ```
 
 Instale as dependências:
