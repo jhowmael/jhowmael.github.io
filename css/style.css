@@ -1,6 +1,6 @@
 body {
-    background-color: #161616;
-    color: #161616;
+    background-color: #0e0e0e;
+    color: #0e0e0e;
     font-family: serif;
     text-align: justify;
 }
@@ -124,10 +124,9 @@ h5, h3{
 }
 
 #header {
-  background: #161616 ;
+  background: #0e0e0e ;
   transition: all 0.5s;
   height: 70px;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 #header .logo {
@@ -379,7 +378,7 @@ h5, h3{
 }
 
 #hero {
-  background-color: #090909;
+  background-color: #0e0e0e;
   background-size: cover; 
 }
 
@@ -397,10 +396,6 @@ h4{
 
 section {
   padding: 60px 0;
-}
-
-.section-bg {
-  background-color: #202020;
 }
 
 .section-title {
@@ -448,7 +443,7 @@ section {
 }
 
 #footer {
-  background: #090909;
+  background: #0e0e0e;
   color: #fff;
   font-size: 14px;
   text-align: center;
@@ -631,7 +626,7 @@ section {
 
 /* Fundo da barra (trilho) */
 ::-webkit-scrollbar-track {
-  background: #161616;      /* Cor do fundo da barra */
+  background: #0e0e0e;      /* Cor do fundo da barra */
   border-radius: 10px;
 }
 
@@ -639,10 +634,15 @@ section {
 ::-webkit-scrollbar-thumb {
   background-color: #800020; /* Cor do "polegar" da barra */
   border-radius: 10px;
-  border: 3px solid #161616; /* Espaçamento ao redor do polegar */
+  border: 3px solid #0e0e0e; /* Espaçamento ao redor do polegar */
 }
 
 /* Opcional: ao passar o mouse */
 ::-webkit-scrollbar-thumb:hover {
   background-color: #800020;
+}
+
+
+img{
+  width: 400px;
 }
