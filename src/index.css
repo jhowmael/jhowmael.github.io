@@ -120,6 +120,33 @@
     transform: scale(1.05);
   }
 
+  /* Setas do carrossel: mantém centralização vertical no hover */
+  .liquid-glass-btn-nav {
+    background: linear-gradient(
+      155deg,
+      hsl(0 0% 100% / 0.65) 0%,
+      hsl(0 0% 100% / 0.35) 100%
+    );
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid hsl(0 0% 100% / 0.6);
+    box-shadow:
+      0 4px 16px hsl(215 28% 10% / 0.06),
+      inset 0 1px 0 hsl(0 0% 100% / 0.8);
+    color: hsl(var(--foreground));
+    transform: translateY(-50%);
+    transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .liquid-glass-btn-nav:hover {
+    background: linear-gradient(
+      155deg,
+      hsl(0 0% 100% / 0.78) 0%,
+      hsl(0 0% 100% / 0.48) 100%
+    );
+    transform: translateY(-50%) scale(1.08);
+  }
+
   .liquid-glass-btn-primary {
     background: linear-gradient(
       155deg,

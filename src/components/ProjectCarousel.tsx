@@ -100,20 +100,20 @@ const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
         {projects.length > 1 && (
           <>
             <Button
-              variant="outline"
+              variant="ghost"
               size="sm"
               onClick={prevSlide}
-              className="absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 z-10 liquid-glass-btn border-0 hover:bg-transparent rounded-full h-10 w-10 p-0"
+              className="absolute -left-2 sm:-left-4 top-1/2 z-10 liquid-glass-btn-nav rounded-full h-10 w-10 p-0"
               aria-label="Projeto anterior"
             >
               <ChevronLeft size={16} />
             </Button>
 
             <Button
-              variant="outline"
+              variant="ghost"
               size="sm"
               onClick={nextSlide}
-              className="absolute -right-2 sm:-right-4 top-1/2 -translate-y-1/2 z-10 liquid-glass-btn border-0 hover:bg-transparent rounded-full h-10 w-10 p-0"
+              className="absolute -right-2 sm:-right-4 top-1/2 z-10 liquid-glass-btn-nav rounded-full h-10 w-10 p-0"
               aria-label="Próximo projeto"
             >
               <ChevronRight size={16} />
