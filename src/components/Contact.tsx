@@ -1,243 +1,62 @@
-import { useState } from "react";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Instagram } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
+import { Mail, Phone, Linkedin, Github } from "lucide-react";
+import SectionTitle from "@/components/SectionTitle";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    // Simulação de envio
-    setTimeout(() => {
-      setIsLoading(false);
-      toast({
-        title: "Mensagem enviada!",
-        description: "Obrigado pelo contato. Responderei em breve!",
-      });
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 1000);
-  };
-
-  const contactInfo = [
+  const contacts = [
     {
-      icon: <Mail className="text-primary" size={20} />,
-      label: "Email",
+      icon: <Mail size={28} />,
+      label: "E-mail",
       value: "jonatan.ismael996@gmail.com",
-      href: "mailto:jonatan.ismael996@gmail.com"
+      href: "mailto:jonatan.ismael996@gmail.com",
     },
     {
-      icon: <Phone className="text-primary" size={20} />,
+      icon: <Phone size={28} />,
       label: "Telefone",
-      value: "+55 (13) 99666-2857",
-      href: "tel:+5513996662857"
+      value: "(13) 99666-2857",
+      href: "tel:+5513996662857",
     },
     {
-      icon: <MapPin className="text-primary" size={20} />,
-      label: "Localização",
-      value: "São Vicente/SP, Brasil",
-      href: "#"
-    }
-  ];
-
-  const socialLinks = [
-    {
-      icon: <Github size={20} />,
-      label: "GitHub",
-      href: "https://github.com/jhowmael",
-      color: "hover:text-gray-400"
-    },
-    {
-      icon: <Linkedin size={20} />,
+      icon: <Linkedin size={28} />,
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/jonatan-ismael-dos-santos-182326219/",
-      color: "hover:text-blue-400"
+      value: "@jonatan-ismael",
+      href: "https://www.linkedin.com/in/jonatan-ismael/",
     },
     {
-      icon: <Instagram size={20} />,
-      label: "Instagram",
-      href: "https://www.instagram.com/mael_bb8/?next=%2F",
-      color: "hover:text-blue-400"
-    }
+      icon: <Github size={28} />,
+      label: "GitHub",
+      value: "@jhowmael",
+      href: "https://github.com/jhowmael",
+    },
   ];
 
   return (
-    <section id="contact" className="py-20 px-4">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Entre em Contato
-            </span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Estou sempre aberto a novas oportunidades e colaborações. 
-            Vamos conversar sobre seu próximo projeto!
-          </p>
-        </div>
+    <section id="contact" className="py-16 px-4">
+      <div className="container mx-auto max-w-5xl">
+        <SectionTitle>Contatos</SectionTitle>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <Card className="bg-gradient-card border-border shadow-card">
-            <CardHeader>
-              <CardTitle className="text-2xl">Envie uma Mensagem</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">
-                      Nome *
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Seu nome completo"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
-                      Email *
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="seu@email.com"
-                    />
-                  </div>
+        <div className="rounded-3xl glass-strong p-6 sm:p-8 lg:p-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {contacts.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="flex flex-col items-center text-center gap-3 group"
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-full liquid-glass-icon transition-all duration-300">
+                  {item.icon}
                 </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium">
-                    Assunto *
-                  </label>
-                  <Input
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    placeholder="Assunto da mensagem"
-                  />
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-1">
+                    {item.label}
+                  </p>
+                  <p className="text-sm text-muted-foreground group-hover:text-primary transition-colors break-all">
+                    {item.value}
+                  </p>
                 </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">
-                    Mensagem *
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    placeholder="Conte-me sobre seu projeto ou oportunidade..."
-                  />
-                </div>
-
-                <Button 
-                  type="submit" 
-                  className="w-full" 
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    "Enviando..."
-                  ) : (
-                    <>
-                      <Send className="mr-2" size={16} />
-                      Enviar Mensagem
-                    </>
-                  )}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <Card className="bg-gradient-card border-border shadow-card">
-              <CardHeader>
-                <CardTitle className="text-xl">Informações de Contato</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {contactInfo.map((info, index) => (
-                  <div key={index} className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">{info.label}</p>
-                      {info.href && info.href !== "#" ? (
-                        <a 
-                          href={info.href}
-                          className="font-medium hover:text-primary transition-colors"
-                        >
-                          {info.value}
-                        </a>
-                      ) : (
-                        <p className="font-medium">{info.value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-border shadow-card">
-              <CardHeader>
-                <CardTitle className="text-xl">Redes Sociais</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex space-x-4">
-                  {socialLinks.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center space-x-2 p-3 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors ${social.color}`}
-                    >
-                      {social.icon}
-                      <span className="font-medium">{social.label}</span>
-                    </a>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <div className="text-center p-6 bg-muted/50 rounded-lg">
-              <p className="text-muted-foreground mb-2">
-                Tempo de resposta médio
-              </p>
-              <p className="text-2xl font-bold text-primary">24 horas</p>
-            </div>
+              </a>
+            ))}
           </div>
         </div>
       </div>

@@ -1,78 +1,59 @@
-import { Github, Linkedin, Mail, MapPin, GraduationCap } from "lucide-react";
+import { Download, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profileImage from "@/assets/jonatan-profile.jpg";
 
 const Hero = () => {
   const scrollToContact = () => {
-    const element = document.getElementById("contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-16">
-      <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Profile Image */}
-          <div className="relative">
-            <div className="w-80 h-80 rounded-full overflow-hidden shadow-glow">
+    <section id="home" className="px-4 pt-28 pb-16 sm:pb-20">
+      <div className="container mx-auto max-w-5xl">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20 py-8 sm:py-12 lg:py-16">
+          <div className="flex-1 text-center lg:text-left space-y-6">
+            <p className="text-lg sm:text-xl text-muted-foreground">
+              Olá, eu sou o
+            </p>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1]">
+              Jonatan Ismael
+            </h1>
+
+            <p className="text-base sm:text-lg text-muted-foreground font-medium">
+              Desenvolvedor Junior Backend | NestJS | TypeScript | Node.js
+            </p>
+
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start pt-4">
+              <Button
+                size="lg"
+                className="rounded-full px-6 liquid-glass-btn-primary border-0 hover:bg-transparent"
+                asChild
+              >
+                <a href="/cv/jonatan-ismael.pdf" download>
+                  <Download className="mr-2" size={18} />
+                  Download CV
+                </a>
+              </Button>
+
+              <Button
+                size="lg"
+                className="rounded-full px-6 liquid-glass-btn border-0 hover:bg-transparent"
+                onClick={scrollToContact}
+              >
+                <Mail className="mr-2" size={18} />
+                Entrar em contato
+              </Button>
+            </div>
+          </div>
+
+          <div className="relative shrink-0">
+            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-[5px] border-white/70 shadow-window ring-2 ring-primary/30 bg-card">
               <img
                 src={profileImage}
                 alt="Jonatan Ismael"
                 className="w-full h-full object-cover"
               />
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 text-center lg:text-left">
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6">
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
-                Jonatan Ismael
-              </span>
-            </h1>
-            
-            <h2 className="text-2xl lg:text-3xl text-muted-foreground mb-6">
-              Desenvolvedor Back-end
-            </h2>
-
-            <div className="flex flex-wrap gap-4 mb-8 justify-center lg:justify-start">
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <MapPin size={16} />
-                <span>São Vicente/SP</span>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <GraduationCap size={16} />
-                <span>Engenharia da Computação - ESAMC Santos</span>
-              </div>
-            </div>
-
-          <p className="relative text-lg text-muted-foreground mb-8 max-w-2xl after:content-['|'] after:ml-1 after:animate-blink">
-            Desenvolvedor apaixonado por tecnologia, com experiência em TypeScript, Node.js, PHP e Laravel. 
-            Atualmente estagiário na GBM Tech & Control, atuando no desenvolvimento de sistemas logísticos. 
-            Busco sempre aprender, aplicar boas práticas e criar soluções que gerem valor de forma simples e eficiente.
-          </p>
-
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-              <Button onClick={scrollToContact} size="lg" className="bg-primary hover:bg-primary/90">
-                <Mail className="mr-2" size={18} />
-                Entre em Contato
-              </Button>
-              
-              <Button variant="outline" size="lg" asChild>
-                <a href="https://github.com/jhowmael" target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-2" size={18} />
-                  GitHub
-                </a>
-              </Button>
-              
-              <Button variant="outline" size="lg" asChild>
-                <a href="https://www.linkedin.com/in/jonatan-ismael-dos-santos-182326219/" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="mr-2" size={18} />
-                  LinkedIn
-                </a>
-              </Button>
             </div>
           </div>
         </div>

@@ -1,139 +1,49 @@
-import { 
-  Code, 
-  Database, 
-  Server, 
-  Layers, 
-  Zap,
-  GitBranch
-} from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
+import SectionTitle from "@/components/SectionTitle";
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Linguagens de Programação",
-      icon: <Code className="text-primary" size={24} />,
-      skills: [
-        { name: "JavaScript", level: 95 },
-        { name: "TypeScript", level: 90 },
-        { name: "PHP", level: 90 },
-      ]
-    },
-    {
-      title: "Frameworks & Libraries",
-      icon: <Layers className="text-primary" size={24} />,
-      skills: [
-        { name: "Node.js", level: 90 },
-        { name: "NestJS", level: 90 },
-        { name: "Laravel", level: 85 },
-        { name: "CakePHP", level: 80 },
-      ]
-    },
-    {
-      title: "Banco de Dados",
-      icon: <Database className="text-primary" size={24} />,
-      skills: [
-        { name: "MySQL", level: 90 },
-        { name: "PostgreSQL", level: 85 },
-      ]
-    },
-    {
-      title: "Ferramentas & DevOps",
-      icon: <Server className="text-primary" size={24} />,
-      skills: [
-        { name: "Git", level: 90 },
-        { name: "Docker", level: 80 },
-        { name: "Linux", level: 80 },
-      ]
-    }
+  const skills = [
+    { name: "TypeScript", color: "#3178C6", dark: false },
+    { name: "JavaScript", color: "#F7DF1E", dark: true },
+    { name: "Node.js", color: "#339933", dark: false },
+    { name: "NestJS", color: "#E0234E", dark: false },
+    { name: "PHP", color: "#777BB4", dark: false },
+    { name: "Laravel", color: "#FF2D20", dark: false },
+    { name: "Java", color: "#ED8B00", dark: false },
+    { name: "Spring Boot", color: "#6DB33F", dark: false },
+    { name: "MySQL", color: "#4479A1", dark: false },
+    { name: "PostgreSQL", color: "#4169E1", dark: false },
+    { name: "DynamoDB", color: "#4053D6", dark: false },
+    { name: "AWS", color: "#FF9900", dark: true },
+    { name: "Docker", color: "#2496ED", dark: false },
+    { name: "Git", color: "#F05032", dark: false },
+    { name: "Linux", color: "#FCC624", dark: true },
+    { name: "REST APIs", color: "#007AFF", dark: false },
   ];
 
-  const getSkillColor = (level: number) => {
-    if (level >= 90) return "bg-primary";
-    if (level >= 80) return "bg-accent";
-    if (level >= 70) return "bg-secondary";
-    return "bg-muted";
-  };
-
   return (
-    <section id="skills" className="py-20 px-4 bg-muted/20">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Habilidades Técnicas
-            </span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Tecnologias e ferramentas que utilizo no dia a dia para criar soluções eficientes e escaláveis.
-          </p>
-        </div>
+    <section id="skills" className="py-16 px-4">
+      <div className="container mx-auto max-w-5xl">
+        <SectionTitle>Habilidades</SectionTitle>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skillCategories.map((category, index) => (
-            <Card key={index} className="bg-gradient-card border-border hover:shadow-glow transition-all duration-300">
-              <CardHeader className="text-center">
-                <div className="mb-2 flex justify-center">
-                  {category.icon}
-                </div>
-                <CardTitle className="text-lg">{category.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className="text-sm font-medium">{skill.name}</span>
-                      <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div 
-                        className={`h-full ${getSkillColor(skill.level)} rounded-full transition-all duration-1000 ease-out`}
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Additional Skills */}
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-semibold mb-8">Outras Competências</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              "Arquitetura de Software",
-              "API REST",
-              "Microserviços",
-              "Clean Code",
-              "SOLID",
-              "Design Patterns",
-              "Agile/Scrum",
-              "Test-Driven Development",
-              "HTML",
-              "CSS",
-              "XML",
-              "JSON",
-              "C++",
-              "VBA",
-              "NestJS",
-              "Express",
-              "Bootstrap",
-              "JQuery",
-              "PHPUnit",
-              "Composer",
-              "AJAX"
-            ].map((skill, index) => (
-              <span 
-                key={index}
-                className="px-4 py-2 bg-card border border-border rounded-full text-sm hover:bg-primary hover:text-primary-foreground transition-colors"
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {skills.map((skill) => (
+            <div
+              key={skill.name}
+              className="group flex flex-col items-center justify-center gap-3 rounded-2xl glass-strong p-6 hover:scale-[1.03] transition-transform duration-300"
+            >
+              <div
+                className={`flex h-14 w-14 items-center justify-center rounded-2xl text-lg font-bold shadow-sm ${
+                  skill.dark ? "text-black/80" : "text-white"
+                }`}
+                style={{ backgroundColor: skill.color }}
               >
-                {skill}
+                {skill.name.slice(0, 2).toUpperCase()}
+              </div>
+              <span className="text-sm font-semibold text-foreground text-center">
+                {skill.name}
               </span>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
