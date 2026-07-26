@@ -1,29 +1,29 @@
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Github } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-interface Project {
+export type Project = {
   id: number;
   title: string;
   description: string;
   technologies: string[];
-  type: "personal" | "professional";
-  github?: string;
   company?: string;
-}
+};
 
 interface ProjectCarouselProps {
-  title: string;
   projects: Project[];
-  type: "personal" | "professional";
 }
 
 const AUTOPLAY_MS = 5000;
 
-const ProjectCarousel = ({ title, projects, type }: ProjectCarouselProps) => {
+const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [projects]);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) =>
@@ -49,21 +49,17 @@ const ProjectCarousel = ({ title, projects, type }: ProjectCarouselProps) => {
   const currentProject = projects[currentIndex];
 
   return (
-    <div className="mb-16">
-      <h3 className="text-xl font-semibold mb-6 text-foreground">
-        {title}
-      </h3>
-
+    <div className="mb-4">
       <div
         className="relative w-full"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <Card className="glass-strong rounded-3xl border shadow-none min-h-[420px] flex flex-col p-0">
-          <CardHeader className="p-6 sm:p-8 lg:p-10 pb-4">
+        <Card className="glass-strong rounded-3xl border shadow-none min-h-[280px] flex flex-col p-0">
+          <CardHeader className="p-5 sm:p-6 pb-3">
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
-                <CardTitle className="text-xl sm:text-2xl mb-1">
+                <CardTitle className="text-xl mb-1">
                   {currentProject.title}
                 </CardTitle>
                 {currentProject.company && (
@@ -73,30 +69,19 @@ const ProjectCarousel = ({ title, projects, type }: ProjectCarouselProps) => {
                 )}
               </div>
               <span className="shrink-0 px-3 py-1 rounded-full text-xs font-medium liquid-glass-chip-primary">
-                {type === 'personal' ? 'Pessoal' : 'Profissional'}
+                Profissional
               </span>
             </div>
           </CardHeader>
 
-          <CardContent className="flex flex-1 flex-col gap-6 px-6 sm:px-8 lg:px-10 pb-6 sm:pb-8 lg:pb-10">
-            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+          <CardContent className="flex flex-1 flex-col gap-4 px-5 sm:px-6 pb-5 sm:pb-6">
+            <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
               {currentProject.description}
             </p>
 
-            {currentProject.github && (
-              <div>
-                <Button variant="outline" size="sm" asChild>
-                  <a href={currentProject.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2" size={16} />
-                    GitHub
-                  </a>
-                </Button>
-              </div>
-            )}
-
             {currentProject.technologies && currentProject.technologies.length > 0 && (
-              <div className="mt-auto pt-5 border-t border-border">
-                <h4 className="font-semibold mb-3">Tecnologias Utilizadas:</h4>
+              <div className="mt-auto pt-4 border-t border-border">
+                <h4 className="font-semibold mb-3 text-sm">Tecnologias Utilizadas:</h4>
                 <div className="flex flex-wrap gap-2">
                   {currentProject.technologies.map((tech, index) => (
                     <span
@@ -143,7 +128,7 @@ const ProjectCarousel = ({ title, projects, type }: ProjectCarouselProps) => {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentIndex ? 'bg-primary' : 'bg-muted'
+                  index === currentIndex ? "bg-primary" : "bg-muted"
                 }`}
                 aria-label={`Ir para projeto ${index + 1}`}
               />
