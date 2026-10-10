@@ -30,9 +30,9 @@ const About = () => {
             <p>
               Hoje estou na{" "}
               <strong className="text-foreground font-medium">ArchOffice</strong>.
-              Antes, na GBM Tech &amp; Control, desenvolvi serviços back-end em NestJS
-              integrados à AWS (S3, RDS, DynamoDB e SQS) para sistemas de logística
-              portuária e ferroviária.
+              Antes, na GBM Tech &amp; Control, atuei como desenvolvedor full stack em
+              sistemas de logística portuária e ferroviária, com serviços em NestJS
+              integrados à AWS (S3, RDS, DynamoDB e SQS).
             </p>
 
             <p>
@@ -43,10 +43,10 @@ const About = () => {
             </p>
           </div>
 
-          <dl className="card-surface divide-y self-start">
+          <dl className="card-surface flex flex-col divide-y">
             {facts.map(({ icon: Icon, label, value }) => (
-              <div key={label} className="flex items-start gap-3 p-4">
-                <Icon size={18} className="mt-0.5 shrink-0 text-primary" />
+              <div key={label} className="flex flex-1 items-center gap-3 p-4">
+                <Icon size={18} className="shrink-0 text-primary" />
                 <div>
                   <dt className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
                     {label}

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Portfolio — papel claro / grafite escuro, acento teal */
+/* Portfolio — papel claro / grafite escuro, acento azul */
 
 @layer base {
   :root {
@@ -15,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 20% 10%;
 
-    --primary: 174 78% 28%;
+    --primary: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 45 12% 92%;
@@ -24,15 +24,15 @@
     --muted: 45 10% 90%;
     --muted-foreground: 220 8% 40%;
 
-    --accent: 174 45% 92%;
-    --accent-foreground: 174 78% 24%;
+    --accent: 221 80% 95%;
+    --accent-foreground: 221 83% 45%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 40 10% 86%;
     --input: 40 10% 86%;
-    --ring: 174 78% 28%;
+    --ring: 221 83% 53%;
 
     --radius: 0.75rem;
 
@@ -50,7 +50,7 @@
     --popover: 220 14% 10%;
     --popover-foreground: 40 15% 93%;
 
-    --primary: 170 65% 52%;
+    --primary: 213 94% 68%;
     --primary-foreground: 220 16% 7%;
 
     --secondary: 220 12% 14%;
@@ -59,15 +59,15 @@
     --muted: 220 12% 16%;
     --muted-foreground: 220 8% 62%;
 
-    --accent: 170 35% 14%;
-    --accent-foreground: 170 65% 62%;
+    --accent: 221 40% 16%;
+    --accent-foreground: 213 94% 72%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 10% 18%;
     --input: 220 10% 18%;
-    --ring: 170 65% 52%;
+    --ring: 213 94% 68%;
 
     color-scheme: dark;
   }

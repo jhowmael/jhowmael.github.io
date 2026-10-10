@@ -56,9 +56,12 @@ const Hero = () => {
                 Baixar CV
               </a>
               <a
-                href="#contact"
+                href="https://wa.me/5513996662857"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-11 items-center gap-2 rounded-md border px-5 text-sm font-medium hover:bg-secondary transition-colors"
               >
+                <SiWhatsapp size={16} />
                 Entrar em contato
               </a>
 

@@ -22,7 +22,7 @@ const experiences: ExperienceItem[] = [
     roles: [
       {
         title: "Desenvolvedor Full Stack",
-        period: "2026 — Presente",
+        period: "Out 2026 — Presente",
         description: [
           "Desenvolvimento de aplicações full stack com Node.js, Nest.js e React",
           "APIs e interfaces em TypeScript",
@@ -36,20 +36,13 @@ const experiences: ExperienceItem[] = [
     location: "Santos/SP",
     roles: [
       {
-        title: "Desenvolvedor Junior Backend",
-        period: "2026",
+        title: "Desenvolvedor Full Stack",
+        period: "Jun 2025 — Out 2026",
         description: [
-          "Desenvolvimento e manutenção de serviços back-end com NestJS",
+          "Desenvolvimento full stack de sistemas logísticos portuários e ferroviários",
+          "Serviços e APIs REST em NestJS com TypeScript e Node.js",
           "Integração com AWS: S3, RDS, DynamoDB e SQS",
-          "APIs e integrações em TypeScript e Node.js",
-        ],
-      },
-      {
-        title: "Estagiário Backend",
-        period: "Jun 2025 — 2026",
-        description: [
-          "APIs REST em NestJS com TypeScript e Node.js",
-          "Atuação em sistemas logísticos em equipe multidisciplinar",
+          "Funcionalidades em Java (Spring Boot) e SQL Server nos sistemas Log.One",
         ],
       },
     ],
@@ -59,19 +52,20 @@ const experiences: ExperienceItem[] = [
     location: "Santos/SP",
     roles: [
       {
-        title: "Desenvolvedor Junior Backend",
+        title: "Desenvolvedor Full Stack",
         period: "Fev 2023 — Jul 2024",
         description: [
-          "Sistemas web completos em PHP e Laravel",
-          "APIs REST e modelagem de banco de dados",
+          "Sistemas web completos em PHP e Laravel, do back-end às telas",
+          "APIs REST e modelagem de banco de dados MySQL",
+          "Telas e formulários dinâmicos com JavaScript",
         ],
       },
       {
-        title: "Estagiário Backend",
+        title: "Estagiário Full Stack",
         period: "Fev 2022 — Jul 2023",
         description: [
           "Primeira experiência profissional em desenvolvimento",
-          "Projetos web com Laravel e participação em entregas reais",
+          "Projetos web com Laravel e JavaScript e participação em entregas reais",
         ],
       },
     ],
@@ -85,6 +79,22 @@ const Experience = () => {
         <SectionTitle index="03">Experiência</SectionTitle>
 
         <ol className="space-y-12">
+          <li className="grid gap-4 md:grid-cols-[180px_1fr]">
+            <h3 className="flex items-center gap-2 font-semibold md:pt-5">
+              <GraduationCap size={18} className="text-primary" />
+              Formação
+            </h3>
+            <div className="card-surface p-5">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                <h4 className="font-medium">Engenharia da Computação</h4>
+                <span className="font-mono text-xs text-muted-foreground">
+                  2020 — 2025
+                </span>
+              </div>
+              <p className="mt-1 text-sm text-muted-foreground">ESAMC Santos · Concluído</p>
+            </div>
+          </li>
+
           {experiences.map((item) => (
             <li
               key={item.company}
@@ -130,27 +140,6 @@ const Experience = () => {
             </li>
           ))}
 
-          <li className="grid gap-4 md:grid-cols-[180px_1fr]">
-            <div>
-              <h3 className="flex items-center gap-2 font-semibold">
-                <GraduationCap size={18} className="text-primary" />
-                Formação
-              </h3>
-            </div>
-            <div className="card-surface p-5">
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <h4 className="font-medium">Engenharia da Computação</h4>
-                <span className="font-mono text-xs text-muted-foreground">
-                  2020 — 2025
-                </span>
-              </div>
-              <p className="mt-1 text-sm text-muted-foreground">ESAMC Santos · Concluído</p>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                TCC: <span className="text-foreground font-medium">AprovaMe</span> —
-                sistema de simulados e correção de redação com IA.
-              </p>
-            </div>
-          </li>
         </ol>
       </div>
     </section>

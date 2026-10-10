@@ -7,7 +7,6 @@ const menuItems = [
   { href: "#skills", label: "Stack" },
   { href: "#experience", label: "Experiência" },
   { href: "#projects", label: "Projetos" },
-  { href: "#contact", label: "Contato" },
 ];
 
 const Header = () => {
