@@ -1,6 +1,14 @@
-import ProjectCarousel from "./ProjectCarousel";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
-import type { Project } from "./ProjectCarousel";
+
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+  company?: string;
+};
 
 const professionalProjects: Project[] = [
   {
@@ -77,13 +85,55 @@ const professionalProjects: Project[] = [
   },
 ];
 
-const Projects = () => {
-  return (
-    <section id="projects" className="py-16 px-4">
-      <div className="container mx-auto max-w-5xl">
-        <SectionTitle>Projetos</SectionTitle>
+const INITIAL_COUNT = 4;
 
-        <ProjectCarousel projects={professionalProjects} />
+const Projects = () => {
+  const [showAll, setShowAll] = useState(false);
+  const visible = showAll ? professionalProjects : professionalProjects.slice(0, INITIAL_COUNT);
+
+  return (
+    <section id="projects" className="py-14 sm:py-16 px-4">
+      <div className="container mx-auto max-w-5xl">
+        <SectionTitle index="04">Projetos</SectionTitle>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          {visible.map((project) => (
+            <article
+              key={project.id}
+              className="card-surface flex flex-col p-6 transition-colors hover:border-foreground/30"
+            >
+              <p className="font-mono text-xs text-primary">{project.company}</p>
+              <h3 className="mt-2 text-lg font-semibold tracking-tight">
+                {project.title}
+              </h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                {project.description}
+              </p>
+              <ul className="mt-auto flex flex-wrap gap-1.5 pt-5">
+                {project.technologies.map((tech) => (
+                  <li key={tech} className="tag">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        {professionalProjects.length > INITIAL_COUNT && (
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="inline-flex h-10 items-center gap-2 rounded-md border px-4 text-sm font-medium hover:bg-secondary transition-colors"
+            >
+              {showAll ? "Mostrar menos" : `Ver todos os ${professionalProjects.length} projetos`}
+              <ChevronDown
+                size={16}
+                className={`transition-transform ${showAll ? "rotate-180" : ""}`}
+              />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

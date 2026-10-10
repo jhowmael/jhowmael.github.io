@@ -1,47 +1,101 @@
+import type { IconType } from "react-icons";
+import {
+  SiTypescript,
+  SiJavascript,
+  SiDotnet,
+  SiPhp,
+  SiOpenjdk,
+  SiNodedotjs,
+  SiNestjs,
+  SiReact,
+  SiLaravel,
+  SiSpringboot,
+  SiPostgresql,
+  SiMysql,
+  SiMongodb,
+  SiDocker,
+  SiGit,
+  SiLinux,
+} from "react-icons/si";
+import { TbBrandCSharp, TbDatabase, TbApi } from "react-icons/tb";
+import { FaAws } from "react-icons/fa";
 import SectionTitle from "@/components/SectionTitle";
 
+type Skill = {
+  name: string;
+  icon: IconType;
+  color: string;
+};
+
+const groups: { title: string; skills: Skill[] }[] = [
+  {
+    title: "Linguagens",
+    skills: [
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "JavaScript", icon: SiJavascript, color: "#E5C100" },
+      { name: "C#", icon: TbBrandCSharp, color: "#9B4F96" },
+      { name: "PHP", icon: SiPhp, color: "#777BB4" },
+      { name: "Java", icon: SiOpenjdk, color: "#ED8B00" },
+    ],
+  },
+  {
+    title: "Frameworks",
+    skills: [
+      { name: "Node.js", icon: SiNodedotjs, color: "#5FA04E" },
+      { name: "Nest.js", icon: SiNestjs, color: "#E0234E" },
+      { name: "React", icon: SiReact, color: "#38BDF8" },
+      { name: ".NET", icon: SiDotnet, color: "#7C5CE0" },
+      { name: "Laravel", icon: SiLaravel, color: "#FF2D20" },
+      { name: "Spring Boot", icon: SiSpringboot, color: "#6DB33F" },
+    ],
+  },
+  {
+    title: "Bancos de dados",
+    skills: [
+      { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+      { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+      { name: "DynamoDB", icon: TbDatabase, color: "#527FFF" },
+    ],
+  },
+  {
+    title: "Ferramentas",
+    skills: [
+      { name: "AWS", icon: FaAws, color: "#FF9900" },
+      { name: "Docker", icon: SiDocker, color: "#2496ED" },
+      { name: "Git", icon: SiGit, color: "#F05032" },
+      { name: "Linux", icon: SiLinux, color: "#E5B800" },
+      { name: "REST APIs", icon: TbApi, color: "#14B8A6" },
+    ],
+  },
+];
+
 const Skills = () => {
-  const skills = [
-    { name: "TypeScript", color: "#3178C6", dark: false },
-    { name: "JavaScript", color: "#F7DF1E", dark: true },
-    { name: "Node.js", color: "#339933", dark: false },
-    { name: "NestJS", color: "#E0234E", dark: false },
-    { name: "PHP", color: "#777BB4", dark: false },
-    { name: "Laravel", color: "#FF2D20", dark: false },
-    { name: "Java", color: "#ED8B00", dark: false },
-    { name: "Spring Boot", color: "#6DB33F", dark: false },
-    { name: "MySQL", color: "#4479A1", dark: false },
-    { name: "PostgreSQL", color: "#4169E1", dark: false },
-    { name: "DynamoDB", color: "#4053D6", dark: false },
-    { name: "AWS", color: "#FF9900", dark: true },
-    { name: "Docker", color: "#2496ED", dark: false },
-    { name: "Git", color: "#F05032", dark: false },
-    { name: "Linux", color: "#FCC624", dark: true },
-    { name: "REST APIs", color: "#007AFF", dark: false },
-  ];
-
   return (
-    <section id="skills" className="py-16 px-4">
+    <section id="skills" className="py-14 sm:py-16 px-4">
       <div className="container mx-auto max-w-5xl">
-        <SectionTitle>Habilidades</SectionTitle>
+        <SectionTitle index="02">Stack</SectionTitle>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {skills.map((skill) => (
+        <div className="space-y-8">
+          {groups.map((group) => (
             <div
-              key={skill.name}
-              className="group flex flex-col items-center justify-center gap-3 rounded-2xl glass-strong p-6 hover:scale-[1.03] transition-transform duration-300"
+              key={group.title}
+              className="grid gap-4 md:grid-cols-[180px_1fr] md:items-start"
             >
-              <div
-                className={`flex h-14 w-14 items-center justify-center rounded-2xl text-lg font-bold shadow-sm ${
-                  skill.dark ? "text-black/80" : "text-white"
-                }`}
-                style={{ backgroundColor: skill.color }}
-              >
-                {skill.name.slice(0, 2).toUpperCase()}
-              </div>
-              <span className="text-sm font-semibold text-foreground text-center">
-                {skill.name}
-              </span>
+              <h3 className="font-mono text-sm text-muted-foreground md:pt-2.5">
+                {group.title}
+              </h3>
+              <ul className="flex flex-wrap gap-2">
+                {group.skills.map(({ name, icon: Icon, color }) => (
+                  <li
+                    key={name}
+                    className="card-surface flex items-center gap-2.5 px-3.5 py-2 text-sm font-medium transition-colors hover:border-foreground/30"
+                  >
+                    <Icon size={18} style={{ color }} aria-hidden />
+                    {name}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

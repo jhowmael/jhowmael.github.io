@@ -1,63 +1,74 @@
-import { Mail, Phone, Linkedin, Github } from "lucide-react";
+import { Mail, ArrowUpRight } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa";
+import { SiGithub, SiWhatsapp } from "react-icons/si";
 import SectionTitle from "@/components/SectionTitle";
 
+const contacts = [
+  {
+    icon: Mail,
+    label: "E-mail",
+    value: "jonatan.ismael996@gmail.com",
+    href: "mailto:jonatan.ismael996@gmail.com",
+  },
+  {
+    icon: SiWhatsapp,
+    label: "WhatsApp",
+    value: "(13) 99666-2857",
+    href: "https://wa.me/5513996662857",
+  },
+  {
+    icon: FaLinkedin,
+    label: "LinkedIn",
+    value: "in/jonatan-ismael",
+    href: "https://www.linkedin.com/in/jonatan-ismael/",
+  },
+  {
+    icon: SiGithub,
+    label: "GitHub",
+    value: "@jhowmael",
+    href: "https://github.com/jhowmael",
+  },
+];
+
 const Contact = () => {
-  const contacts = [
-    {
-      icon: <Mail size={28} />,
-      label: "E-mail",
-      value: "jonatan.ismael996@gmail.com",
-      href: "mailto:jonatan.ismael996@gmail.com",
-    },
-    {
-      icon: <Phone size={28} />,
-      label: "Telefone",
-      value: "(13) 99666-2857",
-      href: "tel:+5513996662857",
-    },
-    {
-      icon: <Linkedin size={28} />,
-      label: "LinkedIn",
-      value: "@jonatan-ismael",
-      href: "https://www.linkedin.com/in/jonatan-ismael/",
-    },
-    {
-      icon: <Github size={28} />,
-      label: "GitHub",
-      value: "@jhowmael",
-      href: "https://github.com/jhowmael",
-    },
-  ];
-
   return (
-    <section id="contact" className="py-16 px-4">
+    <section id="contact" className="py-14 sm:py-16 px-4">
       <div className="container mx-auto max-w-5xl">
-        <SectionTitle>Contatos</SectionTitle>
+        <SectionTitle index="05">Contato</SectionTitle>
 
-        <div className="rounded-3xl glass-strong p-6 sm:p-8 lg:p-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {contacts.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="flex flex-col items-center text-center gap-3 group"
-              >
-                <div className="flex h-14 w-14 items-center justify-center rounded-full liquid-glass-icon transition-all duration-300">
-                  {item.icon}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground mb-1">
-                    {item.label}
-                  </p>
-                  <p className="text-sm text-muted-foreground group-hover:text-primary transition-colors break-all">
-                    {item.value}
-                  </p>
-                </div>
-              </a>
-            ))}
+        <div className="grid gap-10 md:grid-cols-[1fr_1.2fr]">
+          <div className="space-y-4">
+            <h3 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
+              Vamos conversar?
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Estou aberto a novas oportunidades e projetos. O jeito mais rápido de
+              falar comigo é pelo WhatsApp ou e-mail.
+            </p>
           </div>
+
+          <ul className="card-surface divide-y">
+            {contacts.map(({ icon: Icon, label, value, href }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="group flex items-center gap-4 p-4 transition-colors hover:bg-secondary/60"
+                >
+                  <Icon size={20} className="shrink-0 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <div className="min-w-0 flex-1">
+                    <p className="font-mono text-xs text-muted-foreground">{label}</p>
+                    <p className="truncate text-sm font-medium">{value}</p>
+                  </div>
+                  <ArrowUpRight
+                    size={18}
+                    className="shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

@@ -1,60 +1,92 @@
-import { Download, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import profileImage from "@/assets/jonatan-profile.jpg";
+import { Download, Mail, MapPin } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa";
+import { SiGithub, SiWhatsapp } from "react-icons/si";
+import profileImage from "@/assets/jonatan-profile.png";
+
+const socials = [
+  { icon: SiGithub, label: "GitHub", href: "https://github.com/jhowmael" },
+  { icon: FaLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/jonatan-ismael/" },
+  { icon: SiWhatsapp, label: "WhatsApp", href: "https://wa.me/5513996662857" },
+  { icon: Mail, label: "E-mail", href: "mailto:jonatan.ismael996@gmail.com" },
+];
+
+const stack = ["Node.js", "Nest.js", "React", "TypeScript", "PostgreSQL"];
 
 const Hero = () => {
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <section id="home" className="px-4 pt-28 pb-16 sm:pb-20">
+    <section id="home" className="px-4 pt-32 pb-20 sm:pt-40 sm:pb-28">
       <div className="container mx-auto max-w-5xl">
-        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20 py-8 sm:py-12 lg:py-16">
-          <div className="flex-1 text-center lg:text-left space-y-6">
-            <p className="text-lg sm:text-xl text-muted-foreground">
-              Olá, eu sou o
+        <div className="grid items-center gap-12 md:grid-cols-[1fr_auto] md:gap-16">
+          <div className="space-y-6">
+            <p className="flex items-center gap-2 font-mono text-sm text-muted-foreground">
+              <MapPin size={14} className="text-primary" />
+              São Vicente, SP · Brasil
             </p>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1]">
-              Jonatan Ismael
-            </h1>
+            <div className="space-y-3">
+              <h1 className="text-5xl sm:text-6xl font-semibold tracking-tighter leading-[1.05]">
+                Jonatan Ismael
+              </h1>
+              <p className="text-xl sm:text-2xl text-muted-foreground tracking-tight">
+                Desenvolvedor <span className="text-foreground">Full Stack</span>
+              </p>
+            </div>
 
-            <p className="text-base sm:text-lg text-muted-foreground font-medium">
-              Desenvolvedor Junior Backend | NestJS | TypeScript | Node.js
+            <p className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
+              Engenheiro da Computação com mais de 4 anos construindo sistemas web —
+              de APIs e bancos de dados a interfaces. Hoje na{" "}
+              <span className="text-foreground font-medium">ArchOffice</span>.
             </p>
 
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-start pt-4">
-              <Button
-                size="lg"
-                className="rounded-full px-6 liquid-glass-btn-primary border-0 hover:bg-transparent"
-                asChild
-              >
-                <a href="/cv/jonatan-ismael.pdf" download>
-                  <Download className="mr-2" size={18} />
-                  Download CV
-                </a>
-              </Button>
+            <div className="flex flex-wrap gap-2">
+              {stack.map((item) => (
+                <span key={item} className="tag">
+                  {item}
+                </span>
+              ))}
+            </div>
 
-              <Button
-                size="lg"
-                className="rounded-full px-6 liquid-glass-btn border-0 hover:bg-transparent"
-                onClick={scrollToContact}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <a
+                href="/cv/jonatan-ismael.pdf"
+                download
+                className="inline-flex h-11 items-center gap-2 rounded-md bg-foreground px-5 text-sm font-medium text-background hover:opacity-90 transition-opacity"
               >
-                <Mail className="mr-2" size={18} />
+                <Download size={16} />
+                Baixar CV
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex h-11 items-center gap-2 rounded-md border px-5 text-sm font-medium hover:bg-secondary transition-colors"
+              >
                 Entrar em contato
-              </Button>
+              </a>
+
+              <div className="flex items-center gap-1 sm:ml-2">
+                {socials.map(({ icon: Icon, label, href }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    aria-label={label}
+                    title={label}
+                    className="grid h-10 w-10 place-items-center rounded-md text-muted-foreground hover:text-primary hover:bg-secondary transition-colors"
+                  >
+                    <Icon size={18} />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="relative shrink-0">
-            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-[5px] border-white/70 shadow-window ring-2 ring-primary/30 bg-card">
-              <img
-                src={profileImage}
-                alt="Jonatan Ismael"
-                className="w-full h-full object-cover"
-              />
-            </div>
+          <div className="relative mx-auto w-60 sm:w-72 md:mx-0">
+            <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl border-2 border-primary/60" />
+            <img
+              src={profileImage}
+              alt="Foto de Jonatan Ismael"
+              className="relative aspect-square w-full rounded-2xl border object-cover"
+            />
           </div>
         </div>
       </div>

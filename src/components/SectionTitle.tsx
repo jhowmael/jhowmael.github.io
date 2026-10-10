@@ -1,17 +1,17 @@
 import { ReactNode } from "react";
 
 type SectionTitleProps = {
+  index: string;
   children: ReactNode;
 };
 
-const SectionTitle = ({ children }: SectionTitleProps) => {
+const SectionTitle = ({ index, children }: SectionTitleProps) => {
   return (
-    <div className="flex items-center gap-4 mb-8">
-      <div className="hidden sm:block h-px flex-1 bg-border" />
-      <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-center shrink-0">
+    <div className="mb-10 flex items-baseline gap-4 border-b pb-4">
+      <span className="font-mono text-sm text-primary">{index}</span>
+      <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">
         {children}
       </h2>
-      <div className="hidden sm:block h-px flex-1 bg-border" />
     </div>
   );
 };
